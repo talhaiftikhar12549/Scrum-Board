@@ -1,0 +1,19 @@
+   <div v-show="this.modelshower">
+      <div class="modal-body">
+        <div class="mb-3">
+          <p>Name: {{ selectedItem.name }}</p>
+          <p>Description: {{ selectedItem.description }}</p>
+          <p>Assignee: {{ selectedItem.assignee }}</p>
+          <p>Due Date: {{ selectedItem.duedate }}</p>
+          <p>Status: {{ selectedItem.status }}</p>
+          <p>Spent Time: {{ selectedItem.spenttime }}h</p>
+          <p>Priority: {{ selectedItem.priority }}</p>
+        </div>
+      </div>
+    </div>
+
+
+       const localdata = JSON.stringify(state.form);
+                const storedBacklogDataJson = localStorage.getItem('Local Data';
+                 const oldItems =  JSON.parse(storedBacklogDataJson)
+                const temparr = [...oldItems , newItem]

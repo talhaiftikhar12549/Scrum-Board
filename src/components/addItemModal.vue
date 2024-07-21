@@ -19,27 +19,32 @@
                 <div class="modal-body">
                   <form @submit.prevent="dataSendToBacklog">
                     <div class="mb-3">
-                      <input type="text" v-model="name" required placeholder="Name" class="form-control">
+                      <input type="text" v-model="name" required placeholder="Task Name" class="form-control">
                     </div>
                     <div class="mb-3">
-                      <input type="text" v-model="description" required placeholder="Description" class="form-control">
+                      <input type="text" v-model="description" required placeholder="Task Description" class="form-control">
                     </div>
                     <div class="mb-3">
                       <input type="text" v-model="assignee" required placeholder="Assignee" class="form-control">
                     </div>
                     <div class="mb-3">
-                      <input type="text" v-model="dueDate" required placeholder="Due Date" class="form-control">
+                      <input type="date" v-model="dueDate" :min="today" required placeholder="Due Date" class="form-control">
                     </div>
                     <div class="mb-3">
-                      <input type="text" v-model="status" required placeholder="Status" class="form-control">
+                      <input type="hidden" v-model="status" required placeholder="Status" class="form-control">
                     </div>
                     <div class="mb-3">
-                      <input type="text" v-model="spentTime" required placeholder="Spent Time in hours" class="form-control">
+                      <input type="number" v-model="spentTime" min="0" required placeholder="Spent Time in hours" class="form-control">
                     </div>
                     <div class="mb-3">
-                      <input type="text" v-model="priority" required placeholder="Priority" class="form-control">
+                      <select v-model="priority" required class="form-select" aria-label="Default select example">
+                        <option disabled value="">Select Task Priority</option>
+                        <option value="low">Low</option>
+                        <option value="high">High</option>
+                        <option value="urgent">Urgent</option>
+                      </select>
                     </div>
-                    <button type="submit" class="btn btn-primary" @click="dataSendToBacklog">Add Task</button>
+                    <button type="submit" class="btn btn-primary">Add Task</button>
                   </form>
                 </div>
               </div>
@@ -76,9 +81,10 @@ export default {
       description: "",
       assignee: "",
       dueDate: "",
-      status: "",
+      status: "Back Log",
       spentTime: "",
       priority: "",
+      today: new Date().toISOString().split('T')[0],
       backlogData: BacklogData,
     };
   },

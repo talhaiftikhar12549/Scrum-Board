@@ -34,7 +34,7 @@
                       <input type="hidden" v-model="status" required placeholder="Status" class="form-control">
                     </div>
                     <div class="mb-3">
-                      <input type="number" v-model="spentTime" min="0" required placeholder="Spent Time in hours" class="form-control">
+                      <input type="number" v-model="spentTime" min="1" required placeholder="Spent Time in hours" class="form-control">
                     </div>
                     <div class="mb-3">
                       <select v-model="priority" required class="form-select" aria-label="Default select example">

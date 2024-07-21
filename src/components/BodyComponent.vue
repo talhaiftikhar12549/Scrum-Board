@@ -28,7 +28,10 @@
                   <p class="clearstyle fw-semibold" style="margin: 0px; text-align: left">{{ item.name }}</p>
                   <p class="clearstyle" style="margin: 0px; text-align: left">Priority: {{ item.priority }}</p>
                 </div>
-                <div class="clearstyle" style="width: 20%; padding-right: 4px; text-align: left">{{ item.spenttime }}h</div>
+                <div class="clearstyle" style="width: 20%; padding-right: 4px; text-align: left">{{
+                    item.spenttime
+                  }}h
+                </div>
               </div>
               <div class="clearstyle" style="border-top: darkgrey solid 1px; text-align: left">{{ item.assignee }}</div>
             </div>
@@ -37,7 +40,7 @@
       </div>
     </div>
 
-    <!-- Modals -->
+    <!-- Show Modals Start-->
     <div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered modal-lg">
         <div class="modal-content">
@@ -56,12 +59,16 @@
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal3">Edit Data</button>
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal3">Edit
+              Data
+            </button>
           </div>
         </div>
       </div>
     </div>
+    <!--    Show Modal Ends-->
 
+    <!--Edit Modal Start-->
     <div class="modal fade" id="exampleModal3" tabindex="-1" aria-labelledby="exampleModalLabel2" aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered modal-lg">
         <div class="modal-content">
@@ -75,60 +82,68 @@
                 <input type="text" v-model="selectedItem.name" required placeholder="Name" class="form-control">
               </div>
               <div class="mb-3">
-                <input type="text" v-model="selectedItem.description" required placeholder="Description" class="form-control">
+                <input type="text" v-model="selectedItem.description" required placeholder="Description"
+                       class="form-control">
               </div>
               <div class="mb-3">
                 <input type="text" v-model="selectedItem.assignee" required placeholder="Assignee" class="form-control">
               </div>
               <div class="mb-3">
-                <input type="text" v-model="selectedItem.duedate" required placeholder="Due Date" class="form-control">
+                <input type="date" v-model="selectedItem.duedate" :min="today" required placeholder="Due Date" class="form-control">
               </div>
               <div class="mb-3">
-                <input type="text" v-model="selectedItem.status" required placeholder="Status" class="form-control">
+                <input type="hidden" v-model="selectedItem.status" required placeholder="Status" class="form-control">
               </div>
               <div class="mb-3">
-                <input type="text" v-model="selectedItem.spenttime" required placeholder="Spent Time" class="form-control">
+                <input type="number" min="1" v-model="selectedItem.spenttime" required placeholder="Spent Time"
+                       class="form-control">
               </div>
+
               <div class="mb-3">
-                <input type="text" v-model="selectedItem.priority" required placeholder="Priority" class="form-control">
+                <select v-model="selectedItem.priority" required class="form-select"
+                        aria-label="Default select example">
+                  <option disabled value="">Select Task Priority</option>
+                  <option value="low">Low</option>
+                  <option value="high">High</option>
+                  <option value="urgent">Urgent</option>
+                </select>
               </div>
+
+
               <div class="modal-footer">
-                <button type="submit" class="btn btn-primary" @click="editdata" data-bs-dismiss="modal">Save changes</button>
+                <button type="submit" class="btn btn-primary" @click="editdata" data-bs-dismiss="modal">Save changes
+                </button>
               </div>
             </form>
           </div>
         </div>
       </div>
     </div>
-    <!-- Modals End -->
+    <!--Edit Modals End -->
   </div>
 
 </template>
 
 
-
-
-
-
-
 <script>
-import { mapState, mapMutations } from 'vuex';
+import {mapState, mapMutations} from 'vuex';
 
 export default {
   name: 'BodyComponent',
   data() {
     return {
       searchQuery: "",
+      today: new Date().toISOString().split('T')[0],
       selectedItem: {},
       draggedItem: null,
       columns: [
-        { id: 1, name: 'Backlog' },
-        { id: 2, name: 'In Progress' },
-        { id: 3, name: 'Review' },
-        { id: 4, name: 'Completed' },
-        { id: 5, name: 'On Hold' },
-        { id: 6, name: 'QA' },
-        { id: 7, name: 'Done' },
+        {id: 1, name: 'Backlog'},
+        {id: 2, name: 'In Progress'},
+        {id: 3, name: 'Review'},
+        {id: 4, name: 'Completed'},
+        {id: 5, name: 'On Hold'},
+        {id: 6, name: 'QA'},
+        {id: 7, name: 'Done'},
       ],
     };
   },
@@ -153,7 +168,7 @@ export default {
     drop(event, columnId) {
       event.preventDefault();
       if (this.draggedItem) {
-        this.updateItemColumn({ id: this.draggedItem.id, columnId });
+        this.updateItemColumn({id: this.draggedItem.id, columnId});
         this.draggedItem = null;
       }
     },
@@ -168,7 +183,7 @@ export default {
       }
     },
     setSelectedItem(item) {
-      this.selectedItem = { ...item };
+      this.selectedItem = {...item};
     },
     dataSendToBacklog() {
       this.$store.commit('editData', this.selectedItem);
@@ -176,11 +191,11 @@ export default {
     },
     getStyle(priority) {
       if (priority === "low") {
-        return { backgroundColor: "#d3fff0" };
+        return {backgroundColor: "#d3fff0"};
       } else if (priority === "high") {
-        return { backgroundColor: "#ffdbbb" };
+        return {backgroundColor: "#ffdbbb"};
       } else if (priority === "urgent") {
-        return { backgroundColor: "#ffe2e4" };
+        return {backgroundColor: "#ffe2e4"};
       } else {
         return {};
       }

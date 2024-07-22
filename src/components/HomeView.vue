@@ -37,29 +37,6 @@ export default {
   </div>
 </template>
 
-<!--<style scoped>-->
-<!--.bg-image-opacity{-->
-<!--  position: relative;-->
-<!--  width: 100vw;-->
-<!--  height: 85vh;-->
-<!--  background: url('../assets/scrum.svg') no-repeat center center;-->
-<!--  background-size: cover;-->
-<!--  opacity: 0.05;-->
-<!--  /*z-index: -1;*/-->
-<!--}-->
-<!--/*.bg-image-opacity::before {*/-->
-<!--/*  content: "";*/-->
-<!--/*  position: absolute;*/-->
-<!--/*  top: 50%;*/-->
-<!--/*  left: 50%;*/-->
-<!--/*  width: 80vw;*/-->
-<!--/*  height: 80vh;*/-->
-<!--/*  background: inherit;*/-->
-<!--/*  opacity: 0.2; !* 20% opacity *!*/-->
-<!--/*  z-index: -1;*/-->
-<!--/*}*/-->
-<!--</style>-->
-
 
 
 <style scoped>

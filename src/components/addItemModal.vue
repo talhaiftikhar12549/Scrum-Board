@@ -1,5 +1,7 @@
 <template>
+  <div class="text-center bg-body-tertiary fw-semibold py-2" style="max-width: 100%;"><h5>Scrum Board</h5></div>
   <nav class="navbar navbar-expand-lg bg-body-tertiary">
+
     <div class="container-fluid">
       <div id="navbarSupportedContent" class="d-flex justify-content-between w-100 px-5">
         <!-- submit form modal -->
@@ -55,14 +57,14 @@
         <!-- Download Button -->
 
         <div class="d-flex px-2 ">
-          <div class="mx-1">
+          <div class="mx-4">
             <button class="btn btn-primary" @click="triggerFileInput">
               Import file
             </button>
             <input type="file" ref="fileInput" @change="handleFileUpload" style="display: none;">
           </div>
           <button class="btn btn-primary" @click="downloadJson">
-            Download
+            Export Task
           </button>
         </div>
       </div>

@@ -81,41 +81,53 @@
                 <input type="text" v-model="selectedItem.name" required placeholder="Name" class="form-control">
               </div>
               <div class="mb-3">
-                <input type="text" v-model="selectedItem.description" required placeholder="Description"
-                       class="form-control">
+                <input type="text" v-model="selectedItem.description" required placeholder="Description" class="form-control">
               </div>
               <div class="mb-3">
                 <input type="text" v-model="selectedItem.assignee" required placeholder="Assignee" class="form-control">
               </div>
               <div class="mb-3">
-                <input type="date" v-model="selectedItem.duedate" :min="today" required placeholder="Due Date"
-                       class="form-control">
+                <input type="date" v-model="selectedItem.duedate" :min="today" required placeholder="Due Date" class="form-control">
               </div>
               <div class="mb-3">
                 <input type="hidden" v-model="selectedItem.status" required placeholder="Status" class="form-control">
               </div>
               <div class="mb-3">
-                <input type="number" min="1" v-model="selectedItem.spenttime" required placeholder="Spent Time"
-                       class="form-control">
+                <input type="number" min="1" v-model="selectedItem.spenttime" required placeholder="Spent Time" class="form-control">
               </div>
               <div class="mb-3">
-                <select v-model="selectedItem.priority" required class="form-select"
-                        aria-label="Default select example">
-                  <option disabled value="">Select Task Priority</option>
-                  <option value="low">Low</option>
-                  <option value="high">High</option>
-                  <option value="urgent">Urgent</option>
-                </select>
+
+                <div class="text-start">
+                  <label class="form-label">Select Task Priority</label>
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" name="priority" value="low" v-model="selectedItem.priority" id="priorityLow" required>
+                    <label class="form-check-label" for="priorityLow">
+                      Low
+                    </label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" name="priority" value="high" v-model="selectedItem.priority" id="priorityHigh">
+                    <label class="form-check-label" for="priorityHigh">
+                      High
+                    </label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" name="priority" value="urgent" v-model="selectedItem.priority" id="priorityUrgent">
+                    <label class="form-check-label" for="priorityUrgent">
+                      Urgent
+                    </label>
+                  </div>
+                </div>
               </div>
               <div class="modal-footer">
-                <button type="submit" class="btn btn-primary" @click="editdata" data-bs-dismiss="modal">Save changes
-                </button>
+                <button type="submit" class="btn btn-primary" @click="editdata" data-bs-dismiss="modal">Save changes</button>
               </div>
             </form>
           </div>
         </div>
       </div>
     </div>
+
     <!-- Edit Modal End -->
   </div>
 </template>

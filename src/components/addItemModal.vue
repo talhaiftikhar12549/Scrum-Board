@@ -39,13 +39,29 @@
                       <input type="number" v-model="spentTime" min="1" required placeholder="Spent Time in hours" class="form-control">
                     </div>
                     <div class="mb-3">
-                      <select v-model="priority" required class="form-select" aria-label="Default select example">
-                        <option disabled value="">Select Task Priority</option>
-                        <option value="low">Low</option>
-                        <option value="high">High</option>
-                        <option value="urgent">Urgent</option>
-                      </select>
+                      <label class="form-label">Select Task Priority</label>
+                      <div>
+                        <div class="form-check">
+                          <input class="form-check-input" type="radio" name="priority" value="low" v-model="priority" id="priorityLow" required>
+                          <label class="form-check-label" for="priorityLow">
+                            Low
+                          </label>
+                        </div>
+                        <div class="form-check">
+                          <input class="form-check-input" type="radio" name="priority" value="high" v-model="priority" id="priorityHigh">
+                          <label class="form-check-label" for="priorityHigh">
+                            High
+                          </label>
+                        </div>
+                        <div class="form-check">
+                          <input class="form-check-input" type="radio" name="priority" value="urgent" v-model="priority" id="priorityUrgent">
+                          <label class="form-check-label" for="priorityUrgent">
+                            Urgent
+                          </label>
+                        </div>
+                      </div>
                     </div>
+
                     <button type="submit" class="btn btn-primary">Add Task</button>
                   </form>
                 </div>

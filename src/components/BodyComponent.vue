@@ -10,6 +10,15 @@
           @dragover="dragOver($event)"
           @drop="drop($event, column)"
       >
+        <!-- Add search input at the top of the Backlog column -->
+        <div v-if="column.id === 1" class="mb-2">
+          <input
+              type="text"
+              v-model="searchQuery"
+              class="form-control"
+              placeholder="Search tasks..."
+          />
+        </div>
         <ul class="list-unstyled flex-grow-1">
           <li
               v-for="item in filteredColumnData(column.id)"
@@ -156,7 +165,7 @@ export default {
     },
     filteredColumnData() {
       return (columnId) => {
-        return this.form.filter(item => item.columnId === columnId);
+        return this.form.filter(item => item.columnId === columnId && (columnId !== 1 || item.name.toLowerCase().includes(this.searchQuery.toLowerCase())));
       };
     },
   },

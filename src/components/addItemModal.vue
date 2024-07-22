@@ -21,40 +21,97 @@
                 <div class="modal-body">
                   <form @submit.prevent="dataSendToBacklog">
                     <div class="mb-3">
-                      <input type="text" v-model="name" required placeholder="Task Name" class="form-control">
+                      <input
+                          type="text"
+                          v-model="name"
+                          required
+                          placeholder="Task Name"
+                          class="form-control"
+                          pattern="[a-zA-Z0-9\s]*"
+                          title="Only alphabets and numbers are allowed">
                     </div>
                     <div class="mb-3">
-                      <input type="text" v-model="description" required placeholder="Task Description" class="form-control">
+                      <input
+                          type="text"
+                          v-model="description"
+                          required
+                          placeholder="Task Description"
+                          class="form-control"
+                          pattern="[a-zA-Z0-9\s]*"
+                          title="Only alphabets and numbers are allowed">
                     </div>
                     <div class="mb-3">
-                      <input type="text" v-model="assignee" required placeholder="Assignee" class="form-control">
+                      <input
+                          type="text"
+                          v-model="assignee"
+                          required
+                          placeholder="Assignee"
+                          class="form-control"
+                          pattern="[a-zA-Z0-9\s]*"
+                          title="Only alphabets and numbers are allowed">
                     </div>
                     <div class="mb-3">
-                      <input type="date" v-model="dueDate" :min="today" required placeholder="Due Date" class="form-control">
+                      <input
+                          type="date"
+                          v-model="dueDate"
+                          :min="today"
+                          required
+                          placeholder="Due Date"
+                          class="form-control">
                     </div>
                     <div class="mb-3">
-                      <input type="hidden" v-model="status" required placeholder="Status" class="form-control">
+                      <input
+                          type="hidden"
+                          v-model="status"
+                          required
+                          placeholder="Status"
+                          class="form-control">
                     </div>
                     <div class="mb-3">
-                      <input type="number" v-model="spentTime" min="1" required placeholder="Spent Time in hours" class="form-control">
+                      <input
+                          type="number"
+                          v-model="spentTime"
+                          min="1"
+                          required
+                          placeholder="Spent Time in hours"
+                          class="form-control">
                     </div>
                     <div class="mb-3">
                       <label class="form-label">Select Task Priority</label>
                       <div>
                         <div class="form-check">
-                          <input class="form-check-input" type="radio" name="priority" value="low" v-model="priority" id="priorityLow" required>
+                          <input
+                              class="form-check-input"
+                              type="radio"
+                              name="priority"
+                              value="low"
+                              v-model="priority"
+                              id="priorityLow"
+                              required>
                           <label class="form-check-label" for="priorityLow">
                             Low
                           </label>
                         </div>
                         <div class="form-check">
-                          <input class="form-check-input" type="radio" name="priority" value="high" v-model="priority" id="priorityHigh">
+                          <input
+                              class="form-check-input"
+                              type="radio"
+                              name="priority"
+                              value="high"
+                              v-model="priority"
+                              id="priorityHigh">
                           <label class="form-check-label" for="priorityHigh">
                             High
                           </label>
                         </div>
                         <div class="form-check">
-                          <input class="form-check-input" type="radio" name="priority" value="urgent" v-model="priority" id="priorityUrgent">
+                          <input
+                              class="form-check-input"
+                              type="radio"
+                              name="priority"
+                              value="urgent"
+                              v-model="priority"
+                              id="priorityUrgent">
                           <label class="form-check-label" for="priorityUrgent">
                             Urgent
                           </label>
@@ -64,6 +121,7 @@
 
                     <button type="submit" class="btn btn-primary">Add Task</button>
                   </form>
+
                 </div>
               </div>
             </div>

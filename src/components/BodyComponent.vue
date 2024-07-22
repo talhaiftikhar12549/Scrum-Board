@@ -1,16 +1,16 @@
 <template>
   <div class="text-center" style="max-width: 100%;">
-    <div class="row" style="max-width: 100%; max-height: 100vh">
+    <div class="row" style="max-width: 100%; max-height: 100vh; height: 100vh;">
       <div
           v-for="(column, index) in columns"
           :key="index"
           :id="column.id"
-          class="col py-2"
-          style="width: 100%;height: 100%;"
+          class="col py-2 d-flex flex-column"
+          style="width: 100%; height: 100%; border: 1px solid #ddd; overflow-y: auto;"
           @dragover="dragOver($event)"
           @drop="drop($event, column)"
       >
-        <ul>
+        <ul class="list-unstyled flex-grow-1">
           <li
               v-for="item in filteredColumnData(column.id)"
               :key="item.id"
@@ -27,10 +27,7 @@
                   <p class="clearstyle fw-semibold" style="margin: 0px; text-align: left">{{ item.name }}</p>
                   <p class="clearstyle" style="margin: 0px; text-align: left">Priority: {{ item.priority }}</p>
                 </div>
-                <div class="clearstyle" style="width: 20%; padding-right: 4px; text-align: left">{{
-                    item.spenttime
-                  }}h
-                </div>
+                <div class="clearstyle" style="width: 20%; padding-right: 4px; text-align: left">{{ item.spenttime }}h</div>
               </div>
               <div class="clearstyle" style="border-top: darkgrey solid 1px; text-align: left">{{ item.assignee }}</div>
             </div>
@@ -58,9 +55,7 @@
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal3">Edit
-              Data
-            </button>
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal3">Edit Data</button>
           </div>
         </div>
       </div>
@@ -96,7 +91,6 @@
                 <input type="number" min="1" v-model="selectedItem.spenttime" required placeholder="Spent Time" class="form-control">
               </div>
               <div class="mb-3">
-
                 <div class="text-start">
                   <label class="form-label">Select Task Priority</label>
                   <div class="form-check">
@@ -127,7 +121,6 @@
         </div>
       </div>
     </div>
-
     <!-- Edit Modal End -->
   </div>
 </template>
@@ -212,4 +205,8 @@ export default {
 </script>
 
 <style scoped>
+.list-unstyled {
+  padding-left: 0;
+  margin-bottom: 0;
+}
 </style>

@@ -75,7 +75,7 @@
         <div class="d-flex px-2 ">
           <div class="mx-4">
             <button class="btn btn-primary" @click="triggerFileInput">
-              Import file
+              Import File
             </button>
             <input type="file" ref="fileInput" @change="handleFileUpload" style="display: none;">
           </div>

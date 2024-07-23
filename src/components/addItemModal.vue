@@ -28,8 +28,6 @@
                           required
                           placeholder="Task Name"
                           class="form-control"
-                          pattern="[a-zA-Z0-9\s]*"
-                          title="Only alphabets and numbers are allowed">
                     </div>
                     <div class="mb-3">
                       <input
@@ -38,8 +36,6 @@
                           required
                           placeholder="Task Description"
                           class="form-control"
-                          pattern="[a-zA-Z0-9\s]*"
-                          title="Only alphabets and numbers are allowed">
                     </div>
                     <div class="mb-3">
                       <input
@@ -48,8 +44,6 @@
                           required
                           placeholder="Assignee"
                           class="form-control"
-                          pattern="[a-zA-Z0-9\s]*"
-                          title="Only alphabets and numbers are allowed">
                     </div>
                     <div class="mb-3">
                       <input

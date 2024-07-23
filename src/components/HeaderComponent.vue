@@ -4,7 +4,6 @@
     <div class="row " style="max-width: 100%;">
       <div class="col py-2 border">
         Backlog
-
       </div>
       <div class="col py-2 border">
         Open

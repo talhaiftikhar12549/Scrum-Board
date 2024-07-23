@@ -49,7 +49,9 @@ const store = createStore({
         },
         setFormData(state, payload) {
             console.log(payload);
-            state.form = payload;
+             const mergeData = [...payload,...state.form];
+            // state.form = {payload, state.form }
+            state.form =mergeData
             localStorage.setItem("localdata", JSON.stringify(state.form));
         }
     },

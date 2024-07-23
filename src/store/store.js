@@ -64,7 +64,18 @@ const store = createStore({
         },
         setFormData(state, payload) {
             const mergeData = [...payload, ...state.form];
-            state.form = mergeData;
+
+            function filterUniqueTasks(tasks) {
+                const seen = new Set();
+                return tasks.filter(task => {
+                    const isDuplicate = seen.has(task.id);
+                    seen.add(task.id);
+                    return !isDuplicate;
+                });
+            }
+
+            const uniqueTasks = filterUniqueTasks(mergeData);
+            state.form = uniqueTasks;
             localStorage.setItem("localdata", JSON.stringify(state.form));
             this.commit('taskCount');
         },

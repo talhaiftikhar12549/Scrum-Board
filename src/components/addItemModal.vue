@@ -11,7 +11,8 @@
             Add Tasks
           </button>
           <!-- Modal -->
-          <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+               aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered">
               <div class="modal-content p-4">
                 <div class="modal-header">
@@ -59,19 +60,20 @@
                           placeholder="Due Date"
                           class="form-control">
                     </div>
-<!--                    <div class="mb-3">-->
-<!--                      <input-->
-<!--                          type="hidden"-->
-<!--                          v-model="status"-->
-<!--                          required-->
-<!--                          placeholder="Status"-->
-<!--                          class="form-control">-->
-<!--                    </div>-->
+                    <!--                    <div class="mb-3">-->
+                    <!--                      <input-->
+                    <!--                          type="hidden"-->
+                    <!--                          v-model="status"-->
+                    <!--                          required-->
+                    <!--                          placeholder="Status"-->
+                    <!--                          class="form-control">-->
+                    <!--                    </div>-->
                     <div class="mb-3">
                       <input
                           type="number"
                           v-model="spentTime"
-                          min="1"
+                          step="0.01"
+                          min="0"
                           required
                           placeholder="Spent Time in hours"
                           class="form-control">
@@ -193,7 +195,7 @@ export default {
     },
     downloadJson() {
       const jsonString = JSON.stringify(this.backlogData, null, 2);
-      const blob = new Blob([jsonString], { type: "application/json" });
+      const blob = new Blob([jsonString], {type: "application/json"});
       const link = document.createElement("a");
       link.download = "backlog-data.json";
       link.href = URL.createObjectURL(blob);

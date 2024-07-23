@@ -97,7 +97,7 @@
                 <input type="hidden" v-model="selectedItem.status" required placeholder="Status" class="form-control">
               </div>
               <div class="mb-3">
-                <input type="number" min="1" v-model="selectedItem.spenttime" required placeholder="Spent Time" class="form-control">
+                <input type="number" step="0.01" min="0" v-model="selectedItem.spenttime" required placeholder="Spent Time" class="form-control">
               </div>
               <div class="mb-3">
                 <div class="text-start">

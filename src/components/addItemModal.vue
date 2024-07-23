@@ -8,7 +8,7 @@
         <div>
           <!-- Button trigger modal -->
           <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-            Add Task
+            Add Tasks
           </button>
           <!-- Modal -->
           <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -133,12 +133,12 @@
         <div class="d-flex px-2 ">
           <div class="mx-4">
             <button class="btn btn-primary" @click="triggerFileInput">
-              Import File
+              Import Tasks
             </button>
             <input type="file" ref="fileInput" @change="handleFileUpload" style="display: none;">
           </div>
           <button class="btn btn-primary" @click="downloadJson">
-            Export Task
+            Export Tasks
           </button>
         </div>
       </div>

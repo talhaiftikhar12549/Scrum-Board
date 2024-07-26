@@ -54,14 +54,7 @@
                           placeholder="Due Date"
                           class="form-control">
                     </div>
-                    <!--                    <div class="mb-3">-->
-                    <!--                      <input-->
-                    <!--                          type="hidden"-->
-                    <!--                          v-model="status"-->
-                    <!--                          required-->
-                    <!--                          placeholder="Status"-->
-                    <!--                          class="form-control">-->
-                    <!--                    </div>-->
+
                     <div class="mb-3">
                       <input
                           type="number"

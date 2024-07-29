@@ -164,17 +164,26 @@ export default {
       this.$refs.fileInput.click();
     },
     handleFileUpload(event) {
+
+
       const file = event.target.files[0];
       if (file) {
         const reader = new FileReader();
+
         reader.onload = (e) => {
           try {
             const json = JSON.parse(e.target.result);
             // Assuming the JSON structure matches your `form` structure
-            this.$store.commit('setFormData', json);
+            if(json[0].spenttime)
+            {
+              this.$store.commit('setFormData', json);
+            }
+      else{
+        alert("Please Use a valid Json Format")
+            }
+
           } catch (error) {
             console.error("Invalid JSON file");
-            alert("Please Upload Json file")
           }
         };
         reader.readAsText(file);

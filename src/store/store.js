@@ -1,6 +1,6 @@
 // store.js
-import { createStore } from 'vuex';
-import { v4 as uuidv4 } from 'uuid';
+import {createStore} from 'vuex';
+import {v4 as uuidv4} from 'uuid';
 
 const store = createStore({
     state() {
@@ -8,7 +8,7 @@ const store = createStore({
             count: 53,
             form: JSON.parse(localStorage.getItem('localdata')) || [],
             storedBacklogData: "",
-            taskInColumn: JSON.parse(localStorage.getItem('Task counts')) ||{
+            taskInColumn: JSON.parse(localStorage.getItem('Task counts')) || {
                 backlog: 0,
                 open: 0,
                 new: 0,
@@ -45,7 +45,7 @@ const store = createStore({
                 this.commit('taskCount');
             }
         },
-        updateItemColumn(state, { id, columnId, status }) {
+        updateItemColumn(state, {id, columnId, status}) {
             const item = state.form.find(item => item.id === id);
             if (item) {
                 item.columnId = columnId;
@@ -90,33 +90,35 @@ const store = createStore({
                 qaInProgress: 0,
             };
             state.form.forEach(item => {
-                switch (item.columnId) {
-                    case 1:
-                        state.taskInColumn.backlog += 1;
-                        break;
-                    case 2:
-                        state.taskInColumn.open += 1;
-                        break;
-                    case 3:
-                        state.taskInColumn.new += 1;
-                        break;
-                    case 4:
-                        state.taskInColumn.inProgress += 1;
-                        break;
-                    case 5:
-                        state.taskInColumn.feedBackNeeded += 1;
-                        break;
-                    case 6:
-                        state.taskInColumn.readyForTesting += 1;
-                        break;
-                    case 7:
-                        state.taskInColumn.qaInProgress += 1;
-                        break;
-                    default:
-                        console.log('Unknown columnId:', item.columnId);
-                }
+                    switch (item.columnId) {
+                        case 1:
+                            state.taskInColumn.backlog += 1;
+                            break;
+                        case 2:
+                            state.taskInColumn.open += 1;
+                            break;
+                        case 3:
+                            state.taskInColumn.new += 1;
+                            break;
+                        case 4:
+                            state.taskInColumn.inProgress += 1;
+                            break;
+                        case 5:
+                            state.taskInColumn.feedBackNeeded += 1;
+                            break;
+                        case 6:
+                            state.taskInColumn.readyForTesting += 1;
+                            break;
+                        case 7:
+                            state.taskInColumn.qaInProgress += 1;
+                            break;
+                        default:
+                            console.log('Unknown columnId:', item.columnId);
+
+                    }
+
             });
-            console.log('Task counts:', state.taskInColumn);
+
             localStorage.setItem("Task counts", JSON.stringify(state.taskInColumn));
         }
     },

@@ -33,7 +33,7 @@
             <div class="border my-2 py-2 px-2" :style="getStyle(item.priority)">
               <div class="d-flex">
                 <div class="clearstyle" style="width: 80%">
-                  <p class="clearstyle fw-semibold" style="margin: 0px; text-align: left">{{ item.name }}</p>
+                  <p class="clearstyle fw-semibold" style="margin: 0px; text-align: left">{{item.name.length > 12 ? `${item.name.substring(0, 12)}...` : item.name}}</p>
                   <p class="clearstyle" style="margin: 0px; text-align: left">Priority: {{ item.priority }}</p>
                 </div>
                 <div class="clearstyle" style="width: 20%; padding-right: 4px; text-align: left">{{
@@ -41,7 +41,7 @@
                   }}h
                 </div>
               </div>
-              <div class="clearstyle" style="border-top: darkgrey solid 1px; text-align: left">{{ item.assignee }}</div>
+              <div class="clearstyle" style="border-top: darkgrey solid 1px; text-align: left">{{item.assignee.length > 12 ? `${item.assignee.substring(0, 12)}...` : item.assignee}}</div>
             </div>
           </li>
         </ul>
@@ -134,7 +134,7 @@
                 </div>
               </div>
               <div class="modal-footer">
-                <button type="submit" class="btn btn-primary"  >Save changes
+                <button type="submit" class="btn btn-primary">Save changes
                 </button>
               </div>
             </form>
@@ -145,6 +145,7 @@
     <!-- Edit Modal End -->
   </div>
 </template>
+
 
 <script>
 import {mapState, mapMutations} from 'vuex';
@@ -210,8 +211,8 @@ export default {
       this.$store.commit('editData', this.selectedItem);
       this.selectedItem = {};
     },
-    editdata(){
-alert("Data Changed, You Can Now Close the Modal")
+    editdata() {
+      alert("Data Changed, You Can Now Close the Modal")
     },
     getStyle(priority) {
       if (priority === "low") {
@@ -227,6 +228,7 @@ alert("Data Changed, You Can Now Close the Modal")
   },
 }
 </script>
+
 
 <style scoped>
 .list-unstyled {
